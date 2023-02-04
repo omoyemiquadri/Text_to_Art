@@ -1,0 +1,34 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def myImport(module):
+
+    import subprocess
+
+    import sys
+
+    subprocess.run([sys.executable, "-m", "pip", "-q", "install", module],
+
+        stderr=subprocess.DEVNULL)
+
+    return __import__(module)
+
+text = input('Enter the text you want to convert to ASCII art: ')
+
+ASCII_art = myImport('pyfiglet').figlet_format(text,font='slant')
+
+print("\n" + ASCII_art)
